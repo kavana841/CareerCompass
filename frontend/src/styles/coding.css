@@ -1,0 +1,143 @@
+/* =========================
+   CODING TOPIC PAGE
+========================= */
+
+.coding-topic-page {
+  min-height: 100vh;
+  padding: 40px;
+}
+
+.coding-topic-header {
+  margin-bottom: 30px;
+}
+
+.coding-topic-header h1 {
+  margin-top: 20px;
+  font-size: 32px;
+}
+
+.coding-topic-header p {
+  opacity: 0.75;
+}
+
+.coding-topic-header button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.coding-topic-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 25px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.problem-list,
+.problem-area {
+  border-radius: 16px;
+  padding: 25px;
+}
+
+.problem-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.problem-list h2 {
+  margin-bottom: 10px;
+}
+
+.problem-list button {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.problem-list button span {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.problem-active {
+  outline: 2px solid #7c5cff;
+}
+
+.problem-area h2 {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.problem-area > span {
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+.problem-area p {
+  line-height: 1.7;
+  margin: 20px 0;
+}
+
+.language-selector {
+  margin-bottom: 15px;
+}
+
+.language-selector label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.language-selector select {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #444;
+  font-size: 15px;
+}
+
+.problem-area textarea {
+  width: 100%;
+  min-height: 300px;
+  resize: vertical;
+  padding: 18px;
+  border-radius: 12px;
+  border: 1px solid #444;
+  font-family: monospace;
+  font-size: 15px;
+  box-sizing: border-box;
+}
+
+.problem-area > button {
+  margin-top: 15px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 9px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.coding-success {
+  margin-top: 18px;
+  padding: 14px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+@media (max-width: 800px) {
+  .coding-topic-page {
+    padding: 20px;
+  }
+
+  .coding-topic-layout {
+    grid-template-columns: 1fr;
+  }
+}

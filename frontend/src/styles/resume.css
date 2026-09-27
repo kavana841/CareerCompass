@@ -1,0 +1,1258 @@
+/* ==============================
+   Resume Builder - Layout
+============================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+.resume-page{
+    min-height:100vh;
+    background:#0f172a;
+    color:white;
+    padding:40px;
+    padding-top:100px;
+}
+
+.resume-header{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.resume-header h1{
+    font-size:2.8rem;
+    margin-bottom:10px;
+}
+
+.resume-header p{
+    color:#cbd5e1;
+    font-size:1.1rem;
+}
+
+.resume-container{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:35px;
+    align-items:flex-start;
+}
+
+/* Left Panel */
+
+.resume-form{
+    background:#1e293b;
+    padding:30px;
+    border-radius:18px;
+    box-shadow:0 10px 30px rgba(0,0,0,.3);
+}
+
+/* Right Panel */
+
+.resume-preview{
+    background:white;
+    color:#111827;
+    padding:35px;
+    border-radius:18px;
+    min-height:900px;
+    box-shadow:0 10px 30px rgba(0,0,0,.3);
+}
+
+/* Mobile */
+
+@media(max-width:900px){
+
+.resume-container{
+
+grid-template-columns:1fr;
+
+}
+
+.resume-page{
+
+padding:20px;
+
+}
+
+}
+/* ==============================
+   Form Styling
+============================== */
+
+.resume-form h2{
+    margin-top:30px;
+    margin-bottom:15px;
+    color:#60a5fa;
+    font-size:22px;
+}
+
+.resume-form input,
+.resume-form textarea{
+
+    width:100%;
+
+    padding:14px 16px;
+
+    margin-bottom:18px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#334155;
+
+    color:white;
+
+    font-size:16px;
+
+    outline:none;
+
+    transition:.3s;
+}
+
+.resume-form textarea{
+
+    resize:vertical;
+
+    min-height:90px;
+
+}
+
+.resume-form input::placeholder,
+.resume-form textarea::placeholder{
+
+    color:#cbd5e1;
+
+}
+
+.resume-form input:focus,
+.resume-form textarea:focus{
+
+    border:2px solid #3b82f6;
+
+    background:#1e293b;
+
+    box-shadow:0 0 12px rgba(59,130,246,.4);
+
+}
+
+.download-btn{
+
+    width:100%;
+
+    margin-top:20px;
+
+    padding:15px;
+
+    background:#2563eb;
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    border:none;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.download-btn:hover{
+
+    background:#1d4ed8;
+
+    transform:translateY(-2px);
+
+}
+/* ==============================
+   Resume Preview Styling
+============================== */
+
+.resume-preview{
+    background:white;
+    color:#1f2937;
+    border-radius:20px;
+    padding:40px;
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
+}
+
+.resume-header-card{
+    text-align:center;
+    border-bottom:2px solid #e5e7eb;
+    padding-bottom:25px;
+    margin-bottom:30px;
+}
+
+.resume-header-card h1{
+    font-size:42px;
+    color:#111827;
+    margin-bottom:12px;
+}
+
+.resume-header-card p{
+    color:#6b7280;
+    margin:8px 0;
+    font-size:15px;
+}
+
+.resume-preview section{
+    margin-top:30px;
+}
+
+.resume-preview h2{
+    color:#2563eb;
+    font-size:24px;
+    margin-bottom:12px;
+    border-left:5px solid #2563eb;
+    padding-left:12px;
+}
+
+.resume-preview p{
+    color:#374151;
+    line-height:1.8;
+    font-size:16px;
+}
+
+.resume-preview strong{
+    color:#111827;
+}
+
+.resume-preview hr{
+    margin:25px 0;
+    border:none;
+    border-top:2px solid #e5e7eb;
+}
+.profile-image{
+
+    width:130px;
+
+    height:130px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    margin-bottom:20px;
+
+    border:5px solid #2563eb;
+
+}
+/* ========================= */
+/* Template Selector */
+/* ========================= */
+
+.template-selector{
+    margin:30px auto;
+    text-align:center;
+}
+
+.template-buttons{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.template-buttons button{
+
+    padding:12px 24px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#1e293b;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+    transition:.3s;
+}
+
+.template-buttons button:hover{
+
+    background:#7c3aed;
+
+}
+
+.active-template{
+
+    background:#7c3aed !important;
+
+}
+/* ========================= */
+/* Modern Template */
+/* ========================= */
+
+.modern-header{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:25px;
+
+    padding:25px;
+
+    background:linear-gradient(135deg,#7c3aed,#4f46e5);
+
+    color:white;
+
+    border-radius:15px;
+
+    margin-bottom:25px;
+
+}
+
+.modern-header h1{
+
+    margin-bottom:10px;
+
+}
+
+.modern-header p{
+
+    margin:4px 0;
+
+}
+
+.profile-image{
+
+    width:120px;
+
+    height:120px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:4px solid white;
+
+}
+/* ========================= */
+/* Professional Template */
+/* ========================= */
+
+.professional-template{
+
+    background:white;
+
+    color:#222;
+
+    padding:40px;
+
+    border-radius:12px;
+
+}
+
+.professional-header{
+
+    text-align:center;
+
+}
+
+.professional-header h1{
+
+    font-size:34px;
+
+    margin-bottom:10px;
+
+}
+
+.contact-info{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+    font-size:15px;
+
+    color:#555;
+
+}
+
+.professional-template section{
+
+    margin-top:25px;
+
+}
+
+.professional-template h2{
+
+    color:#1d4ed8;
+
+    border-bottom:2px solid #ddd;
+
+    padding-bottom:5px;
+
+    margin-bottom:10px;
+
+}
+/* ========================= */
+/* Minimal Template */
+/* ========================= */
+
+.minimal-template{
+
+    background:white;
+
+    color:#222;
+
+    padding:35px;
+
+    border-radius:10px;
+
+    font-family:Arial, Helvetica, sans-serif;
+
+}
+
+.minimal-template h1{
+
+    text-align:center;
+
+    font-size:34px;
+
+    margin-bottom:8px;
+
+}
+
+.minimal-template p{
+
+    line-height:1.6;
+
+}
+
+.minimal-template section{
+
+    margin-top:22px;
+
+}
+
+.minimal-template h2{
+
+    font-size:18px;
+
+    color:#333;
+
+    border-bottom:1px solid #ccc;
+
+    padding-bottom:6px;
+
+    margin-bottom:10px;
+
+}
+/* ================================
+   ATS RESULT DASHBOARD
+================================ */
+
+.ats-result {
+  margin-top: 30px;
+  padding: 25px;
+  border-radius: 18px;
+  background: #111827;
+  border: 1px solid #263244;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.ats-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.ats-header h2 {
+  margin-bottom: 8px;
+  font-size: 24px;
+}
+
+.ats-header p {
+  margin: 0;
+  color: #aab4c3;
+}
+
+.ats-score {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.ats-score span {
+  font-size: 58px;
+  font-weight: 800;
+}
+
+.ats-score small {
+  font-size: 20px;
+  color: #9ca3af;
+  margin-left: 5px;
+}
+
+.ats-progress {
+  width: 100%;
+  height: 12px;
+  background: #273244;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+.ats-progress-bar {
+  height: 100%;
+  border-radius: 20px;
+  background: linear-gradient(90deg, #6366f1, #8b5cf6);
+  transition: width 0.6s ease;
+}
+
+.ats-result h3 {
+  margin-top: 25px;
+  margin-bottom: 15px;
+}
+
+.ats-checks {
+  display: grid;
+  gap: 10px;
+}
+
+.ats-check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: #1a2332;
+}
+
+.ats-check span:last-child {
+  color: #e5e7eb;
+}
+
+.ats-suggestions {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.ats-suggestions li {
+  margin-bottom: 10px;
+  color: #cbd5e1;
+  line-height: 1.5;
+}
+/* ATS KEYWORDS */
+
+.keyword-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.keyword-tag {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 20px;
+  background: #252f43;
+  border: 1px solid #6366f1;
+  color: #c7d2fe;
+  font-size: 14px;
+  font-weight: 600;
+}
+/* ================================
+   JOB DESCRIPTION MATCHER
+================================ */
+
+.job-matcher {
+  margin-top: 30px;
+  padding: 25px;
+  border-radius: 18px;
+  background: #111827;
+  border: 1px solid #263244;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.job-matcher h2 {
+  margin-bottom: 8px;
+}
+
+.job-matcher > p {
+  color: #aab4c3;
+  margin-bottom: 20px;
+}
+
+.job-matcher textarea {
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 180px;
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid #374151;
+  background: #1a2332;
+  color: #f3f4f6;
+  resize: vertical;
+  font-family: inherit;
+  font-size: 15px;
+  line-height: 1.5;
+  outline: none;
+}
+
+.job-matcher textarea:focus {
+  border-color: #6366f1;
+}
+
+.job-matcher .primary-btn {
+  margin-top: 15px;
+}
+
+.job-match-result {
+  margin-top: 25px;
+  padding-top: 25px;
+  border-top: 1px solid #263244;
+}
+
+.job-score {
+  font-size: 52px;
+  font-weight: 800;
+  text-align: center;
+  margin: 15px 0 25px;
+}
+
+.missing-keyword-tag {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 20px;
+  background: #3a2025;
+  border: 1px solid #ef4444;
+  color: #fecaca;
+  font-size: 14px;
+  font-weight: 600;
+}
+/* ================================
+   TARGET ROLE ANALYSIS
+================================ */
+
+.role-selector {
+  margin-top: 30px;
+  padding: 25px;
+  border-radius: 18px;
+  background: #111827;
+  border: 1px solid #263244;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.role-selector > p {
+  color: #aab4c3;
+  line-height: 1.5;
+}
+
+.role-selector select {
+  width: 100%;
+  padding: 13px;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: 1px solid #374151;
+  background: #1a2332;
+  color: #f3f4f6;
+  font-size: 15px;
+  outline: none;
+}
+
+.role-selector select:focus {
+  border-color: #6366f1;
+}
+
+.role-analysis {
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid #263244;
+}
+
+.role-score {
+  text-align: center;
+  margin: 15px 0;
+}
+
+.role-score span {
+  font-size: 48px;
+  font-weight: 800;
+}
+
+.role-score p {
+  margin: 3px 0;
+  color: #aab4c3;
+}
+
+.role-progress {
+  width: 100%;
+  height: 10px;
+  background: #273244;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 25px;
+}
+
+.role-progress-bar {
+  height: 100%;
+  border-radius: 20px;
+  background: linear-gradient(90deg, #6366f1, #8b5cf6);
+  transition: width 0.6s ease;
+}
+/* ================================
+   CAREER READINESS
+================================ */
+
+.career-readiness {
+  margin-top: 30px;
+  padding: 28px;
+  border-radius: 18px;
+  background: #111827;
+  border: 1px solid #263244;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.readiness-header {
+  text-align: center;
+}
+
+.readiness-header p {
+  color: #aab4c3;
+}
+
+.readiness-score {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.readiness-score span {
+  font-size: 60px;
+  font-weight: 800;
+}
+
+.readiness-score small {
+  font-size: 20px;
+  color: #9ca3af;
+  margin-left: 5px;
+}
+
+.readiness-progress {
+  height: 12px;
+  width: 100%;
+  background: #273244;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.readiness-progress-bar {
+  height: 100%;
+  border-radius: 20px;
+  background: linear-gradient(90deg, #6366f1, #8b5cf6);
+  transition: width 0.6s ease;
+}
+
+.readiness-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.readiness-card {
+  padding: 18px;
+  text-align: center;
+  border-radius: 12px;
+  background: #1a2332;
+}
+
+.readiness-card span {
+  font-size: 25px;
+}
+
+.readiness-card h3 {
+  font-size: 15px;
+  margin: 8px 0;
+}
+
+.readiness-card strong {
+  font-size: 24px;
+}
+
+.readiness-message {
+  margin-top: 25px;
+  padding: 15px;
+  text-align: center;
+  border-radius: 10px;
+  background: #1a2332;
+  color: #cbd5e1;
+}
+
+@media (max-width: 700px) {
+  .readiness-cards {
+    grid-template-columns: 1fr;
+  }
+}
+/* ================================
+   PROGRESS TRACKER
+================================ */
+
+.progress-tracker {
+  margin-top: 30px;
+  padding: 28px;
+  border-radius: 18px;
+  background: #111827;
+  border: 1px solid #263244;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.progress-header {
+  text-align: center;
+}
+
+.progress-header p {
+  color: #aab4c3;
+}
+
+.overall-progress {
+  margin: 25px 0;
+}
+
+.progress-number {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.progress-number strong {
+  font-size: 30px;
+}
+
+.progress-number span {
+  color: #aab4c3;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 12px;
+  background: #273244;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  border-radius: 20px;
+  background: linear-gradient(90deg, #6366f1, #8b5cf6);
+  transition: width 0.5s ease;
+}
+
+.progress-items {
+  display: grid;
+  gap: 12px;
+}
+
+.progress-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 16px;
+  border-radius: 12px;
+  background: #1a2332;
+  border: 1px solid transparent;
+}
+
+.progress-item.completed {
+  border-color: #6366f1;
+}
+
+.progress-icon {
+  font-size: 28px;
+}
+
+.progress-info {
+  flex: 1;
+}
+
+.progress-info h3 {
+  margin: 0 0 5px;
+  font-size: 16px;
+}
+
+.progress-info p {
+  margin: 0;
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+.progress-item button {
+  padding: 9px 14px;
+  border: none;
+  border-radius: 8px;
+  background: #6366f1;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.progress-item.completed button {
+  background: #374151;
+}
+
+@media (max-width: 700px) {
+  .progress-item {
+    flex-wrap: wrap;
+  }
+
+  .progress-item button {
+    width: 100%;
+  }
+}
+/* ================================
+   CAREERCOMPASS DASHBOARD
+================================ */
+
+.dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 25px;
+}
+
+.dashboard-header {
+  margin-bottom: 30px;
+}
+
+.dashboard-header h1 {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.dashboard-header p {
+  color: #9ca3af;
+}
+
+.dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.dashboard-card {
+  padding: 22px;
+  border-radius: 16px;
+  background: #111827;
+  border: 1px solid #263244;
+}
+
+.dashboard-card span {
+  font-size: 28px;
+}
+
+.dashboard-card h3 {
+  margin: 12px 0 5px;
+}
+
+.dashboard-card strong {
+  font-size: 20px;
+}
+
+.dashboard-progress {
+  margin-top: 25px;
+  padding: 25px;
+  border-radius: 16px;
+  background: #111827;
+  border: 1px solid #263244;
+}
+
+.dashboard-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboard-section-header strong {
+  font-size: 25px;
+}
+
+.dashboard-progress-bar {
+  width: 100%;
+  height: 12px;
+  margin-top: 15px;
+  background: #273244;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.dashboard-progress-bar div {
+  height: 100%;
+  border-radius: 20px;
+  background: linear-gradient(
+    90deg,
+    #6366f1,
+    #8b5cf6
+  );
+  transition: width 0.5s ease;
+}
+
+.dashboard-progress p {
+  color: #9ca3af;
+}
+
+.quick-actions {
+  margin-top: 30px;
+}
+
+.quick-actions h2 {
+  margin-bottom: 18px;
+}
+
+.action-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.action-grid button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px;
+  border-radius: 14px;
+  border: 1px solid #263244;
+  background: #111827;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.2s;
+}
+
+.action-grid button:hover {
+  transform: translateY(-3px);
+  border-color: #6366f1;
+}
+
+.action-grid button span {
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .dashboard-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .action-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .dashboard-cards,
+  .action-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.back-dashboard-btn {
+  margin: 20px;
+  padding: 10px 18px;
+  border: 1px solid #374151;
+  border-radius: 8px;
+  background: #111827;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.back-dashboard-btn:hover {
+  border-color: #6366f1;
+}
+
+/* =========================================================
+   NATIVE A4 RESUME PRINT / EXPORT STYLES
+========================================================= */
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 10mm 12mm;
+  }
+
+  html,
+  body {
+    background: #ffffff !important;
+    color: #111827 !important;
+    font-size: 10pt;
+    line-height: 1.35;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    min-height: auto !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Hide all non-resume web UI components */
+  nav,
+  .navbar,
+  footer,
+  .back-dashboard-btn,
+  .resume-header,
+  .template-selector,
+  .resume-form,
+  .ats-result,
+  .job-matcher,
+  .career-readiness,
+  .progress-tracker,
+  .role-selector,
+  button,
+  .quick-actions,
+  .dashboard-header,
+  .dashboard-cards,
+  .dashboard-progress {
+    display: none !important;
+  }
+
+  /* Reset outer container */
+  .resume-page {
+    background: #ffffff !important;
+    color: #111827 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    min-height: auto !important;
+    width: 100% !important;
+  }
+
+  .resume-container {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    gap: 0 !important;
+  }
+
+  /* Resume Preview as Standalone A4 Document */
+  #resume-preview,
+  .resume-preview {
+    display: block !important;
+    position: static !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    color: #111827 !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    border: none !important;
+    min-height: auto !important;
+  }
+
+  /* 1. Prevent orphan headings (keeps headings attached to their content) */
+  .resume-preview h1,
+  .resume-preview h2,
+  .resume-preview h3,
+  .modern-template h1,
+  .modern-template h2,
+  .modern-template h3,
+  .professional-template h1,
+  .professional-template h2,
+  .professional-template h3,
+  .minimal-template h1,
+  .minimal-template h2,
+  .minimal-template h3 {
+    break-after: avoid !important;
+    page-break-after: avoid !important;
+  }
+
+  /* 2. Allow natural content flow without forced multi-line jumps */
+  .resume-preview section,
+  .modern-template section,
+  .professional-template section,
+  .minimal-template section {
+    break-inside: auto !important;
+    page-break-inside: auto !important;
+    margin-top: 10px !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* 3. Keep header banner cohesive */
+  .modern-header,
+  .professional-header,
+  .resume-header-card {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    margin-bottom: 10px !important;
+    padding: 14px 18px !important;
+  }
+
+  /* 4. Compact typography & spacing to fit A4 page space efficiently */
+  .resume-preview p,
+  .modern-template p,
+  .professional-template p,
+  .minimal-template p {
+    font-size: 9.5pt !important;
+    line-height: 1.35 !important;
+    margin: 2px 0 !important;
+    color: #1f2937 !important;
+    orphans: 3;
+    widows: 3;
+  }
+
+  .resume-preview h2,
+  .modern-template h2,
+  .professional-template h2 {
+    font-size: 13pt !important;
+    margin-top: 8px !important;
+    margin-bottom: 4px !important;
+    padding-bottom: 2px !important;
+  }
+
+  .minimal-template h2 {
+    font-size: 11pt !important;
+    margin-top: 6px !important;
+    margin-bottom: 3px !important;
+  }
+
+  .resume-preview hr,
+  .professional-template hr,
+  .minimal-template hr {
+    margin: 8px 0 !important;
+    border-top: 1px solid #d1d5db !important;
+  }
+
+  /* Template specific print refinements */
+  .modern-template,
+  .professional-template,
+  .minimal-template {
+    background: #ffffff !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    color: #111827 !important;
+  }
+
+  .modern-header {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    box-shadow: none !important;
+  }
+
+  .profile-image {
+    width: 75px !important;
+    height: 75px !important;
+    margin-bottom: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Remove all browser link styling / anchor URL printing */
+  a {
+    text-decoration: none !important;
+    color: inherit !important;
+  }
+}
