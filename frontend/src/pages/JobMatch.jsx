@@ -1,21 +1,20 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function JobMatch() {
   const navigate = useNavigate();
 
-  const [resume, setResume] = useState(null);
+  const [resume] = useState(() => {
+    try {
+      const savedResume = localStorage.getItem("careerCompassResume");
+      return savedResume ? JSON.parse(savedResume) : null;
+    } catch {
+      return null;
+    }
+  });
   const [jobDescription, setJobDescription] = useState("");
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    const savedResume = localStorage.getItem("careerCompassResume");
-
-    if (savedResume) {
-      setResume(JSON.parse(savedResume));
-    }
-  }, []);
 
   const handleMatch = async (e) => {
     e.preventDefault();

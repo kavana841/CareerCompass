@@ -18,7 +18,6 @@ function CodingTopic() {
   const [selectedProblem, setSelectedProblem] = useState(0);
   const [code, setCode] = useState("");
   const [language, setLanguage] = useState("python");
-  const [completed, setCompleted] = useState(false);
 
   const problemBank = {
   arrays: [
@@ -220,35 +219,6 @@ const problems = problemBank[topic] || [
 
   const problem = problems[selectedProblem];
 
-  const handleSubmit = () => {
-    if (!code.trim()) {
-      alert("Please write your solution first.");
-      return;
-    }
-
-    setCompleted(true);
-
-    const savedProgress =
-      JSON.parse(
-        localStorage.getItem("careerCompassCoding")
-      ) || {};
-
-    if (!savedProgress[topicName]) {
-      savedProgress[topicName] = [];
-    }
-
-    if (!savedProgress[topicName].includes(problem.title)) {
-      savedProgress[topicName].push(problem.title);
-    }
-
-    localStorage.setItem(
-      "careerCompassCoding",
-      JSON.stringify(savedProgress)
-    );
-
-    alert("🎉 Problem completed!");
-  };
-
   return (
     <div className="coding-topic-page">
 
@@ -280,7 +250,6 @@ const problems = problemBank[topic] || [
               onClick={() => {
                 setSelectedProblem(index);
                 setCode("");
-                setCompleted(false);
               }}
               className={
                 selectedProblem === index
@@ -361,28 +330,15 @@ const problems = problemBank[topic] || [
 
           <div className="code-actions">
 
-  <button onClick={handleRun}>
-    ▶️ Run Code
+  <button disabled title="Code execution is not available yet">
+    ▶️ Run Code (Coming Soon)
   </button>
 
-  <button onClick={handleSubmit}>
-    ✅ Submit Solution
+  <button disabled title="Solution checking is not available yet">
+    ✅ Submit (Coming Soon)
   </button>
 
 </div>
-
-          {completed && (
-            <div className="coding-success">
-  ✅ Problem completed successfully using{" "}
-  {language === "python"
-    ? "Python 🐍"
-    : language === "java"
-    ? "Java ☕"
-    : language === "cpp"
-    ? "C++ 💻"
-    : "JavaScript ⚡"}
-</div>
-          )}
 
         </div>
 

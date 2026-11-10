@@ -5,7 +5,7 @@ function Features() {
             <div className="feature-grid">
                 <div className="feature-card"
                 onClick={() => 
-                    documnet
+                    document
                     .getElementById("roadmap")
                     .scrollIntoView({ behavior: "smooth", })
                 }

@@ -4,6 +4,8 @@ function ResumeForm({
   handleImageUpload,
   downloadResume,
   generateObjective,
+  isGeneratingObjective,
+  objectiveMessage,
   improveSkills,
   analyzeResume
 }) {
@@ -69,9 +71,15 @@ function ResumeForm({
       type="button"
       className="primary-btn"
       onClick={generateObjective}
+      disabled={isGeneratingObjective}
     >
-      Generate with AI
+      {isGeneratingObjective ? "Generating…" : "✨ Generate with AI"}
     </button>
+      {objectiveMessage && (
+        <p className={`ai-feedback ai-feedback-${objectiveMessage.type}`} role="status" aria-live="polite">
+          {objectiveMessage.text}
+        </p>
+      )}
 
       {/* Education */}
       <h2>🎓 Education</h2>

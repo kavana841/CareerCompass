@@ -1,9 +1,13 @@
+import { useNavigate } from "react-router-dom";
+import Roadmap from "../components/Roadmap";
+
 function RoadmapPage() {
-    return(
-        <div style={{ color:"white", padding: "100px" }}>
-            <h1> Roadmap Page </h1>
-            <p>Welcome to the Roadmap Page.</p>
-        </div>
+    const navigate = useNavigate();
+    return (
+        <main>
+            <button onClick={() => navigate("/")}>← Back to Dashboard</button>
+            <Roadmap />
+        </main>
     );
 }
 export default RoadmapPage;

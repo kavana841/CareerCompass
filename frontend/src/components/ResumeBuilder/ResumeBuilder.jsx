@@ -51,8 +51,10 @@ function ResumeBuilder() {
 }, [resume]);
 
   const [atsResult, setAtsResult] = useState(null);
+  const [isGeneratingObjective, setIsGeneratingObjective] = useState(false);
+  const [objectiveMessage, setObjectiveMessage] = useState(null);
 
-  const [progress, setProgress] = useState(() => {
+  const [, setProgress] = useState(() => {
   const saved = localStorage.getItem("careerCompassProgress");
 
   return saved
@@ -91,6 +93,9 @@ const updateProgress = (item) => {
       [e.target.name]: e.target.value,
     });
     updateProgress("resume");
+    if (e.target.name === "degree" || e.target.name === "skills") {
+      setObjectiveMessage(null);
+    }
   };
   const handleImageUpload = (e) => {
   const file = e.target.files[0];
@@ -101,6 +106,16 @@ const updateProgress = (item) => {
   }
 };
 const generateObjective = async () => {
+  if (!resume.degree.trim() || !resume.skills.trim()) {
+    setObjectiveMessage({
+      type: "error",
+      text: "Add your degree and skills first so the objective can be tailored to you.",
+    });
+    return;
+  }
+
+  setIsGeneratingObjective(true);
+  setObjectiveMessage(null);
   try {
     const response = await fetch(
       "http://localhost:5000/api/ai/generate-objective",
@@ -117,18 +132,30 @@ const generateObjective = async () => {
       }   
     );
 
-    const data = await response.json();
-    if (data.success) {
+    const data = await response.json().catch(() => ({}));
+    if (response.ok && data.success && data.objective) {
       setResume((prev) => ({
         ...prev,
         objective: data.objective,
       }));
+      updateProgress("resume");
+      setObjectiveMessage({ type: "success", text: "AI objective added. Review it and make it your own." });
     } else {
-      alert("Failed to generate objective.");
+      throw new Error(data.message || "AI generation is unavailable right now.");
     }
   } catch (error) {
-    console.error(error);
-    alert("Backend is not running! Please start the backend server.");
+    const objective = `Motivated ${resume.degree.trim()} candidate with skills in ${resume.skills.trim()}. Ready to apply these strengths to practical projects, solve problems thoughtfully, and grow through collaboration.`;
+    setResume((prev) => ({ ...prev, objective }));
+    updateProgress("resume");
+    const reason = error instanceof TypeError
+      ? "The AI service could not be reached."
+      : error.message;
+    setObjectiveMessage({
+      type: "warning",
+      text: `${reason} A local draft was added. To enable AI-generated writing, start the backend and set OPENAI_API_KEY in backend/.env.`,
+    });
+  } finally {
+    setIsGeneratingObjective(false);
   }
 };
 const improveSkills = async () => {
@@ -261,63 +288,77 @@ const downloadResume = () => {
 
   return (
     <div className="resume-page">
-      <button
-  className="back-dashboard-btn"
-  onClick={() => navigate("/")}
->
-  ← Back to Dashboard
-</button>
-
-      <div className="resume-header">
-        <h1>📄 Professional Resume Builder</h1>
-        <p>Create your ATS-friendly resume instantly.</p>
+      <div className="resume-topbar">
+        <button className="back-dashboard-btn" onClick={() => navigate("/")}>
+          <span aria-hidden="true">←</span> Dashboard
+        </button>
+        <span className="resume-save-status"><span /> Saved on this device</span>
       </div>
-      <TemplateSelector
-        template={template}
-        setTemplate={setTemplate}
-    />
 
-      <div className="resume-container">
+      <header className="resume-intro">
+        <span className="resume-eyebrow">CAREERCOMPASS · RESUME STUDIO</span>
+        <h1>Build a resume that gets noticed</h1>
+        <p>Add your details, choose a style, and see your resume update as you work.</p>
+      </header>
 
-        <ResumeForm
-    resume={resume}
-    handleChange={handleChange}
-    handleImageUpload={handleImageUpload}
-    downloadResume={downloadResume}
-    generateObjective={generateObjective}
-    improveSkills={improveSkills}
-    analyzeResume={analyzeResume}
-/>
-<ATSResult atsResult={atsResult} />
+      <div className="resume-workspace">
+        <section className="resume-editor-column" aria-label="Resume editor">
+          <div className="resume-tool-card resume-template-card">
+            <div className="resume-card-heading">
+              <span className="resume-step">01</span>
+              <div><h2>Choose a template</h2><p>Pick a style for your resume.</p></div>
+            </div>
+            <TemplateSelector template={template} setTemplate={setTemplate} />
+          </div>
 
-<JobMatcher
-  jobDescription={jobDescription}
-  setJobDescription={setJobDescription}
-  matchJobDescription={matchJobDescription}
-  jobMatchResult={jobMatchResult}
-/>
+          <div className="resume-form-card">
+            <div className="resume-card-heading">
+              <span className="resume-step">02</span>
+              <div><h2>Your information</h2><p>Complete each section to build your profile.</p></div>
+            </div>
+            <ResumeForm
+              resume={resume}
+              handleChange={handleChange}
+              handleImageUpload={handleImageUpload}
+              downloadResume={downloadResume}
+              generateObjective={generateObjective}
+              isGeneratingObjective={isGeneratingObjective}
+              objectiveMessage={objectiveMessage}
+              improveSkills={improveSkills}
+              analyzeResume={analyzeResume}
+            />
+          </div>
+        </section>
 
-<CareerReadiness
-  atsResult={atsResult}
-  jobMatchResult={jobMatchResult}
-  resume={resume}
-/>
-
-<ProgressTracker />
-
-<RoleSelector
-  selectedRole={selectedRole}
-  setSelectedRole={setSelectedRole}
-  resume={resume}
-/>
-
-        <ResumePreview
-    resume={resume}
-    profileImage={profileImage}
-    template={template}
-/>   
-
+        <aside className="resume-preview-column">
+          <div className="resume-preview-label">
+            <div><span className="resume-eyebrow">LIVE PREVIEW</span><h2>Your resume</h2></div>
+            <span className="resume-preview-page">A4</span>
+          </div>
+          <ResumePreview resume={resume} profileImage={profileImage} template={template} />
+          <p className="resume-preview-note">Your information stays in this browser until you clear it.</p>
+        </aside>
       </div>
+
+      <section className="resume-insights" aria-labelledby="resume-insights-title">
+        <div className="resume-insights-heading">
+          <span className="resume-eyebrow">NEXT STEPS</span>
+          <h2 id="resume-insights-title">Strengthen your application</h2>
+          <p>Compare your skills with a role and check how your resume is performing.</p>
+        </div>
+        <div className="resume-insights-grid">
+          <RoleSelector selectedRole={selectedRole} setSelectedRole={setSelectedRole} resume={resume} />
+          <ATSResult atsResult={atsResult} />
+          <JobMatcher
+            jobDescription={jobDescription}
+            setJobDescription={setJobDescription}
+            matchJobDescription={matchJobDescription}
+            jobMatchResult={jobMatchResult}
+          />
+          <CareerReadiness atsResult={atsResult} jobMatchResult={jobMatchResult} resume={resume} />
+        </div>
+        <ProgressTracker />
+      </section>
 
     </div>
   );

@@ -1,50 +1,21 @@
 import { useNavigate} from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+
+const readStoredValue = (key, fallback) => {
+  try {
+    const value = localStorage.getItem(key);
+    return value ? JSON.parse(value) : fallback;
+  } catch {
+    return fallback;
+  }
+};
 
 function Dashboard() {
   const navigate = useNavigate();
-  const [resumeExists, setResumeExists] = useState(false);
-  const [resume, setResume] = useState(null);
-  const [progress, setProgress] = useState(null);
-  const [atsScore, setAtsScore]= useState(null);
-  const [jobMatchScore, setJobMatchScore]= useState(null);
-  const [readinessScore, setReadinessScore]= useState(0);
-
-
- useEffect(() => {
-  const savedResume = localStorage.getItem("careerCompassResume");
-  const savedProgress = localStorage.getItem("careerCompassProgress");
-  const savedATS = localStorage.getItem("careerCompassATS");
-  const savedJobMatch = localStorage.getItem("careerCompassJobMatch");
-  
-  if (savedATS){
-    const atsData=JSON.parse(savedATS);
-    setAtsScore(atsData.score);
-  }
-
-  if (savedJobMatch){
-    const jobMatchData=JSON.parse(savedJobMatch);
-    setJobMatchScore(jobMatchData.matchScore);
-  }
-
-  if (savedResume) {
-    const resumeData = JSON.parse(savedResume);
-
-    setResume(resumeData);
-
-    if (
-      resumeData.name ||
-      resumeData.email ||
-      resumeData.skills
-    ) {
-      setResumeExists(true);
-    }
-  }
-
-  if (savedProgress) {
-    setProgress(JSON.parse(savedProgress));
-  }
-}, []);
+  const [resume] = useState(() => readStoredValue("careerCompassResume", null));
+  const [progress] = useState(() => readStoredValue("careerCompassProgress", null));
+  const [atsScore] = useState(() => readStoredValue("careerCompassATS", null)?.score ?? null);
+  const [jobMatchScore] = useState(() => readStoredValue("careerCompassJobMatch", null)?.matchScore ?? null);
 
   const completed = progress
     ? Object.values(progress).filter(Boolean).length
@@ -68,14 +39,7 @@ function Dashboard() {
     jobMatchValue *0.30 +
     preparationValue *0.20
   );
-  useEffect(() => {
-    setReadinessScore(calculatedReadiness);
-  },[
-    resume,
-    atsScore,
-    jobMatchScore,
-    progressPercentage,
-  ]);
+  const readinessScore = calculatedReadiness;
 
   return (
     <div className="dashboard">
@@ -131,9 +95,7 @@ function Dashboard() {
               : "Not Analyzed"}
           </strong>
           <p>
-            {jobMatchScore !== null
-            ? "View Job Match"
-          : "Mtch a Job"}
+            {jobMatchScore !== null ? "View Job Match" : "Match a Job"}
           </p>
         </div>
 
@@ -200,17 +162,17 @@ function Dashboard() {
   <span>Practice Coding</span>
 </button>
 
-          <button>
+          <button disabled title="Aptitude practice is not available yet">
             🧠
-            <span>Take Aptitude</span>
+            <span>Aptitude (Coming Soon)</span>
           </button>
 
-          <button>
+          <button onClick={() => navigate("/mock-interview")}>
             🎤
             <span>Mock Interview</span>
           </button>
 
-          <button>
+          <button onClick={() => navigate("/roadmap")}>
             🗺️
             <span>View Roadmap</span>
           </button>

@@ -409,7 +409,7 @@ font-size:16px;
   background:#DC2626;
 }
 .mock-page{
-  min-height:100hv;
+  min-height:100vh;
   padding:120px 8%;
   background:#0F172A;
   color:white;
@@ -497,7 +497,7 @@ font-size:16px;
   min-height:100vh;
   background:#0F172A;
   color:white;
-  padding:140px 8% 60px;
+  padding:24px clamp(18px, 4vw, 56px) 72px;
 }
 .resume-page h1{
   text-align:center;
